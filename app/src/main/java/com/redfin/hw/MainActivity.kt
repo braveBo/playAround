@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.redfin.hw.image.ImageMainActivity
+import com.redfin.hw.image.ImageMainActivityDynamicLayout
 import com.redfin.hw.utils.IO
 
 class MainActivity : AppCompatActivity() {
@@ -28,6 +29,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun luanchImageActivity() {
         val intent = Intent(this, ImageMainActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun luanchImageActivityDynamicLayout() {
+        val intent = Intent(this, ImageMainActivityDynamicLayout::class.java)
         startActivity(intent)
     }
 

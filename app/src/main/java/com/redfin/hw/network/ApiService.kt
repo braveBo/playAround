@@ -6,6 +6,7 @@ import com.redfin.hw.data.ImageItem
 import kotlinx.coroutines.*
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
@@ -45,7 +46,7 @@ private val retrofit2 = Retrofit.Builder().baseUrl(BASE_URL2)
 
 interface ApiService2 {
     @GET("v2/list")
-    suspend fun getImages(@Query("page") page:Int = 1, @Query("limit") limit: Int = 100): List<ImageItem>
+    suspend fun getImages(@Query("page") page:Int = 1, @Query("limit") limit: Int = 100): Response<List<ImageItem>>
 }
 object ImageApi {
     val apiService:ApiService2 by lazy {

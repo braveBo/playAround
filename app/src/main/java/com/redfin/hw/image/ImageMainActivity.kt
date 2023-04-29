@@ -23,14 +23,21 @@ class ImageMainActivity : AppCompatActivity() {
         recyclerView = findViewById(R.id.recyclerView)
 
         recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = ImageAdapter()
+        val adapter = ImageAdapter()
+        recyclerView.adapter = adapter
 
         if (savedInstanceState == null) {
             viewModel.load()
 
             lifecycleScope.launch {
                 viewModel.images.collect { imageItems ->
-                    println(imageItems)
+                    adapter.load(imageItems)
+                }
+            }
+
+            lifecycleScope.launch {
+                viewModel.error.collect { error ->
+                    println(error?.message)
                 }
             }
         }
