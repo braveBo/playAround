@@ -9,18 +9,22 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.redfin.hw.image.ImageMainActivity
 import com.redfin.hw.image.ImageMainActivityDynamicLayout
+import com.redfin.hw.image.StaticImageActivity
 import com.redfin.hw.utils.IO
 
 class MainActivity : AppCompatActivity() {
     private lateinit var adapter: FoodTruckAdapter
     private lateinit var viewModel: FoodTruckViewModel
     private lateinit var recyclerView: RecyclerView
+    private val io:IO = IO()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        luanchImageActivity()
+        //luanchImageActivity()
+        //io.runParallel()
+        luanchImageStatic()
 
 //        setupRecyclerView()
 //        setupViewModel()
@@ -34,6 +38,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun luanchImageActivityDynamicLayout() {
         val intent = Intent(this, ImageMainActivityDynamicLayout::class.java)
+        startActivity(intent)
+    }
+
+    private fun luanchImageStatic() {
+        val intent = Intent(this, StaticImageActivity::class.java)
         startActivity(intent)
     }
 
